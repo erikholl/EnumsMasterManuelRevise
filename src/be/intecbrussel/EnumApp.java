@@ -16,14 +16,13 @@ public class EnumApp {
         Coin[] allCoins = Coin.values(); // coin enum to array
         int amountOfCoin = 0;
 
-        int modulo = 1;
-        int i = allCoins.length - 1;
-        do {
-            if (userAmount == 0) {
-                System.out.println("Zero? No coins!"); // throw message if zero
-
-            } else {
-                // calculate max of coin[i] in userAmount and what remains
+        if (userAmount == 0) {
+            System.out.println("Zero? No coins!"); // throw message if zero
+        } else {
+            int modulo = 1;
+            int i = allCoins.length - 1;
+            do {
+                // calculate max of coin[i] in userAmount and remainder
                 amountOfCoin = (int) Math.floor(userAmount / allCoins[i].getValue());
                 modulo = userAmount % allCoins[i].getValue();
 
@@ -34,9 +33,9 @@ public class EnumApp {
 
                 userAmount = modulo; // set amount next iteration to remainder
                 i--;
-            }
-        } while (i >= 0 && modulo != 0); // as long as modulo is not 0,
-        // # coins to be calculated
+            } while (i >= 0 && modulo != 0); // as long as modulo is not 0,
+            // # coins to be calculated
+        }
     }
 }
 
